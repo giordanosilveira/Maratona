@@ -30,6 +30,7 @@ int main () {
 //			ev1 = ceil(ev1);			
 //			ev2 = ev2/d;
 //			ev2 = ceil(ev2);
+
 			prob = (1 - pow((prob2/prob1), ev1))/(1 - pow((prob2/prob1), ev1 + ev2));
 		
 		}
