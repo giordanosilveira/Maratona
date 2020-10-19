@@ -15,8 +15,6 @@ int main () {
 
 		prob1 = at/DADO; // probability of the vampire 1 winning on the dice;
 		prob2 = (DADO - at)/DADO; // probability of the vampire 2 winning on the dice;
-
-
 		ev1 = ev1/d;
 		ev1 = ceil(ev1);			
 		ev2 = ev2/d;
@@ -26,11 +24,6 @@ int main () {
 			prob = (ev1/(ev1 + ev2));
 
 		else {
-//			ev1 = ev1/d;
-//			ev1 = ceil(ev1);			
-//			ev2 = ev2/d;
-//			ev2 = ceil(ev2);
-
 			prob = (1 - pow((prob2/prob1), ev1))/(1 - pow((prob2/prob1), ev1 + ev2));
 		
 		}
