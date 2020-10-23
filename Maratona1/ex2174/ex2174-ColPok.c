@@ -23,15 +23,15 @@ int searchPok (char *poke, char **allpok, int j) {
 	if (j == -1)
 		return 0;
 
-	for (i = 0; i <= j; i++) {
-		if (strcmp (poke, allpok[i]) == 0)
+	for (i = 0; i <= j; i++) {			//it compares if there are repeated pokemons on the list of repeated pokemons;
+		if (strcmp (poke, allpok[i]) == 0)      // if there is, then return 1 for main function so that it doesn't do the next operation;
 			return 1;
 	}
 	
-	return 0;
+	return 0;					// if there are no repeated pokemons, then return 0;  
 
 }
-void insrtPok  (char *poke, char **allpok, int* k) {
+void insrtPok  (char *poke, char **allpok, int* k) {   // inserts a new repeated pokemons on the list of repeated pokemons;
 
 	allpok[*k] = poke;
 
@@ -43,10 +43,10 @@ void cmpPok (char **plist, int n, int i, char **allpok, int *k, int *count) {
 
 	while (j < n){
 	
-		if (strcmp (plist[i], plist[j]) == 0) {
-			*k = *k + 1;
-			*count = *count + 1;
-			insrtPok (plist[i], allpok, k);
+		if (strcmp (plist[i], plist[j]) == 0) {	// search for a repeated pokemons on the general list of pokemons 
+			*k = *k + 1;			// if there is and doesn't existe a such pokemon on the list of repeated pokemons
+			*count = *count + 1;		// insert it on the list of repeated pokemons the new pokemon
+			insrtPok (plist[i], allpok, k);	// and the counter adds up to 1;
 			j = n;
 		}
 		j++;
@@ -68,9 +68,8 @@ int main () {
 	i = 0; j = -1; count = 0;
 	while (i < n) {
 		
-		if (! searchPok	(plist[i], allpok, j))
-			cmpPok (plist, n, i, allpok, &j, &count);
-
+		if (! searchPok	(plist[i], allpok, j))            //if it isn't on the list of repeated pokemons,
+			cmpPok (plist, n, i, allpok, &j, &count); // checks if there are repeated pokemons on the plist
 		i++;
 
 	}
