@@ -31,12 +31,12 @@ int searchPok (char *poke, char **allpok, int j) {
 	return 0;
 
 }
-void insrtPok  (char *poke, char **allpok, int k) {
+void insrtPok  (char *poke, char **allpok, int* k) {
 
-	allpok[k] = poke;
+	allpok[*k] = poke;
 
 }
-void cmpPok (char **plist, int i, char **allpok, int *k) {
+void cmpPok (char **plist, int n, int i, char **allpok, int *k, int *count) {
 
 	int j;
 	j = i + 1;
@@ -44,7 +44,8 @@ void cmpPok (char **plist, int i, char **allpok, int *k) {
 	while (j < n){
 	
 		if (strcmp (plist[i], plist[j]) == 0) {
-			k++;
+			*k = *k + 1;
+			*count = *count + 1;
 			insrtPok (plist[i], allpok, k);
 			j = n;
 		}
@@ -53,7 +54,7 @@ void cmpPok (char **plist, int i, char **allpok, int *k) {
 }   
 int main () {
 
-	int n, i, j;
+	int n, i, j, count;
 	char **plist, **allpok, pok;
 
 	scanf ("%d", &n);
@@ -64,15 +65,16 @@ int main () {
 		scanf ("%s", plist[i]); 
 	}
 
-	i = 0; j = -1;
+	i = 0; j = -1; count = 0;
 	while (i < n) {
 		
 		if (! searchPok	(plist[i], allpok, j))
-			cmpPok (plist, i, allpok, j);
+			cmpPok (plist, n, i, allpok, &j, &count);
 
 		i++;
 
 	}
 	
+	printf ("%d\n", count);
 	return 0;
 }
