@@ -55,7 +55,7 @@ void cmpPok (char **plist, int n, int i, char **allpok, int *k, int *count) {
 int main () {
 
 	int n, i, j, count;
-	char **plist, **allpok, pok;
+	char **plist, **allpok;
 
 	scanf ("%d", &n);
 	plist = allcteMem (n);
@@ -75,6 +75,6 @@ int main () {
 
 	}
 	
-	printf ("%d\n", count);
+	printf ("Falta(m) %d pomekon(s).\n" , POKE-(n-count)+1);
 	return 0;
 }
